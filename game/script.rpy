@@ -211,6 +211,22 @@ label start:
     image veronika = "Вероника.png"
 
 
+    play music 'audio/bg.mp3' fadein (2.0) volume (0.07)
+
+    image anton = "anton.png"
+    image vasalisa = "vasalisa.png"
+    image stolyarov = "stolyarov.png"
+    image pavel = "pavel.png"
+    image dmitriy = "dmitriy.png"
+    image permash = "permash.png"
+    image rubanok = "rubanok.png"
+    image masha = "masha.png"
+    image alina = "alina.png"
+    image kseniya = "kseniya.png"
+    image polina = "polina.png"
+    image veronika = "veronika.png"
+
+
     scene bg room
 
     $ base_story_file = "text_base.txt"
