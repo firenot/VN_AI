@@ -108,7 +108,7 @@ init python:
         """
         path = renpy.config.basedir + "/game/" + filename
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"{player_name}->{npc_name}; {player_text}\n")
+            f.write(f"{player_name}; {player_text}\n")
 
     def reset_story_to_base(base_filename, work_filename):
         """
@@ -192,6 +192,20 @@ init python:
 
 label start:
 
+    image anton = "anton.png"
+    image vasalisa = "vasalisa.png"
+    image stolyarov = "stolyarov.png"
+    image pavel = "pavel.png"
+    image dmitriy = "dmitriy.png"
+    image permash = "permash.png"
+    image rubanok = "rubanok.png"
+    image masha = "masha.png"
+    image alina = "alina.png"
+    image kseniya = "kseniya.png"
+    image polina = "polina.png"
+    image veronika = "veronika.png"
+
+
     scene bg room
 
     $ base_story_file = "text_base.txt"
@@ -200,10 +214,21 @@ label start:
     # Гарантируем наличие рабочего файла
     $ ensure_work_story(base_story_file, work_story_file)
 
-    main_hero "Теперь с тобой будут болтать разные персонажи из файла."
-    main_hero "Чтобы выйти из беседы, напиши «Конец»."
 
     while True:
+
+        image anton = "Антон.png"
+        image vasalisa = "Василиса.png"
+        image stolyarov = "Столяров.png"
+        image pavel = "Павел.png"
+        image dmitriy = "Дмитрий.png"
+        image permash = "Пермаш.png"
+        image rubanok = "Рубанок.png"
+        image masha = "Маша.png"
+        image alina = "Алина.png"
+        image kseniya = "Ксения.png"
+        image polina = "Полина.png"
+        image veronika = "Вероника.png"
         
         scene bg room
 
