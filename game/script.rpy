@@ -108,7 +108,7 @@ init python:
         """
         path = renpy.config.basedir + "/game/" + filename
         with open(path, "a", encoding="utf-8") as f:
-            f.write(f"{player_name}->{npc_name}; {player_text}\n")
+            f.write(f"{player_name}; {player_text}\n")
 
     def reset_story_to_base(base_filename, work_filename):
         """
@@ -191,6 +191,25 @@ init python:
 # ================== ИГРА ==================
 
 label start:
+    init python:
+        from llm import work
+        MESSAGES,npc1,npc2=work()
+
+    play music 'audio/bg.mp3' fadein (2.0) volume (0.07)
+
+    image anton = "Антон.png"
+    image vasalisa = "Василиса.png"
+    image stolyarov = "Столяров.png"
+    image pavel = "Павел.png"
+    image dmitriy = "Дмитрий.png"
+    image permash = "Пермаш.png"
+    image rubanok = "Рубанок.png"
+    image masha = "Маша.png"
+    image alina = "Алина.png"
+    image kseniya = "Ксения.png"
+    image polina = "Полина.png"
+    image veronika = "Вероника.png"
+
 
     scene bg room
 
@@ -200,10 +219,21 @@ label start:
     # Гарантируем наличие рабочего файла
     $ ensure_work_story(base_story_file, work_story_file)
 
-    main_hero "Теперь с тобой будут болтать разные персонажи из файла."
-    main_hero "Чтобы выйти из беседы, напиши «Конец»."
 
     while True:
+
+        image anton = "Антон.png"
+        image vasalisa = "Василиса.png"
+        image stolyarov = "Столяров.png"
+        image pavel = "Павел.png"
+        image dmitriy = "Дмитрий.png"
+        image permash = "Пермаш.png"
+        image rubanok = "Рубанок.png"
+        image masha = "Маша.png"
+        image alina = "Алина.png"
+        image kseniya = "Ксения.png"
+        image polina = "Полина.png"
+        image veronika = "Вероника.png"
         
         scene bg room
 
@@ -236,5 +266,8 @@ label start:
             # 1) дописываем ответ игрока в КОНЕЦ файла
             $ append_player_reply_to_story(work_story_file, main_hero_name, last_name, player_answer)
 
-            # 2) реакция НПС
-            $ renpy.say(last_name, f"Интересно... Ты сказал(а): {player_answer}")
+            init python:
+                from llm import work
+                MESSAGES.append({"role": "user", "content": player_answer})
+                MESSAGES,npc1,npc2=work(MESSAGES,npc1,npc2)
+
