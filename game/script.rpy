@@ -192,6 +192,8 @@ init python:
 
 label start:
 
+    play music 'audio/bg.mp3' fadein (2.0) volume (0.07)
+
     image anton = "anton.png"
     image vasalisa = "vasalisa.png"
     image stolyarov = "stolyarov.png"
